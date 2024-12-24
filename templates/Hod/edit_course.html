@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Edit Course</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6"> <!-- Set form width to 50% using Bootstrap grid -->
+            <form action="{% url 'update_course' %}" method="post" class="p-4 shadow rounded bg-white" enctype="multipart/form-data">
+
+            {% csrf_token %}
+            {% include 'includes/messages.html' %}
+
+                <div class="mb-3">
+                    <label for="course_name" class="form-label">Course Name</label>
+                    <input id="course_name" name="course_name" type="text" class="form-control" value="{{course.name}}" required>
+                    <input id="course_id" name="course_id" type="text" class="form-control" value="{{course.id}}" hidden>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success">Update Course</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

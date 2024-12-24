@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Add Session</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6"> <!-- Set form width to 50% using Bootstrap grid -->
+            <form action="{% url 'add_session' %}" method="post" class="p-4 shadow rounded bg-white" >
+
+            {% csrf_token %}
+            {% include 'includes/messages.html' %}
+
+                <div class="mb-3">
+                    <label for="session_year_start" class="form-label">Session Year Start</label>
+                    <input id="session_year_start" name="session_year_start" type="date" class="form-control" required>
+                </div>
+                     <div class="mb-3">
+                    <label for="session_year_end" class="form-label">Session Year End</label>
+                    <input id="session_year_end" name="session_year_end" type="date" class="form-control" required>
+                </div>
+
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success">Add Session</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Edit Subjects</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6"> <!-- Set form width to 50% using Bootstrap grid -->
+            <form action="{% url 'update_subject' %}" method="post" class="p-4 shadow rounded bg-white" >
+
+            {% csrf_token %}
+            {% include 'includes/messages.html' %}
+
+                <div class="mb-3">
+                    <label for="subject_name" class="form-label">Subject Name</label>
+                    <input id="subject_name" name="subject_name" type="text" class="form-control" value="{{subject.name}}" required>
+                    <input id="subject_id" name="subject_id" type="text" class="form-control" value="{{subject.id}}" hidden>
+                </div>
+             <div class="mb-3">
+    <label for="course" class="form-label">Course Name</label>
+    <select class="form-select gender-select" name="course_id" required>
+        <option>Select Course</option>
+        {% for i in course %}
+            <option value="{{ i.id }}" {% if i.id == subject.course.id %}selected{% endif %}>
+                {{ i.name }}
+            </option>
+        {% endfor %}
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="staff" class="form-label">Staff</label>
+    <select class="form-select gender-select" name="staff_id" required>
+        <option>Select Staff</option>
+        {% for i in staff %}
+            <option value="{{ i.id }}" {% if i.id == subject.staff.id %}selected{% endif %}>
+                {{ i.admin.first_name }} {{ i.admin.last_name }}
+            </option>
+        {% endfor %}
+    </select>
+</div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success">Add Subject</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

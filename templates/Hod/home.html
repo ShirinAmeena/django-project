@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+    <strong id="admin">Welcome Admin {{ user.username }}!!</strong>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Student Card -->
+        <div class="flex items-center p-3 bg-white shadow rounded-lg">
+            <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-blue-600 bg-blue-100 rounded-full mr-6">
+                <!-- Student Icon -->
+                <i class="fas fa-user-graduate h-8 w-8"></i>
+            </div>
+            <div>
+                <span class="block text-xl font-bold">Students</span>
+                <span class="block text-gray-500">{{student_count}}</span>
+            </div>
+        </div>
+
+        <!-- Staff Card -->
+        <div class="flex items-center p-3 bg-white shadow rounded-lg">
+            <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-600 bg-green-100 rounded-full mr-6">
+                <!-- Staff Icon -->
+                <i class="fas fa-chalkboard-teacher h-8 w-8"></i>
+            </div>
+            <div>
+                <span class="block text-xl font-bold">Staff</span>
+                <span class="block text-gray-500">{{staff_count}}</span>
+            </div>
+        </div>
+
+        <!-- Courses Card -->
+        <div class="flex items-center p-3 bg-white shadow rounded-lg">
+            <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-yellow-600 bg-yellow-100 rounded-full mr-6">
+                <!-- Courses Icon -->
+                <i class="fas fa-book-open h-8 w-8"></i>
+            </div>
+            <div>
+                <span class="block text-xl font-bold">Courses</span>
+                <span class="block text-gray-500">{{course_count}}</span>
+            </div>
+        </div>
+
+        <!-- Subjects Card -->
+        <div class="flex items-center p-3 bg-white shadow rounded-lg">
+            <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-red-600 bg-red-100 rounded-full mr-6">
+                <!-- Subjects Icon -->
+                <i class="fas fa-book h-8 w-8"></i>
+            </div>
+            <div>
+                <span class="block text-xl font-bold">Subjects</span>
+                <span class="block text-gray-500">{{subject_count}}</span>
+            </div>
+        </div>
+
+    </div>
+<br>
+<div class="charts-container">
+    <!-- Column chart for Students and Staff -->
+    <div id="chartContainer" class="chart-item chart-box"></div>
+    <div id="chartContainer2" class="chart-item chart-box"></div>
+    <!-- Donut chart Containers for Gender and Courses & Subjects -->
+    <div id="donutChartContainer" class="chart-item donut-chart chart-box"></div>
+    <div id="donutChartContainer2" class="chart-item donut-chart chart-box"></div>
+</div>
+
+{% include 'includes/chart.js' %}
+{% endblock content %}
